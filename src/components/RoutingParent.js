@@ -48,7 +48,7 @@ function RoutingParent() {
     <Routes>
       <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
-      <Route path="/Recipes" element={<Recipes  />} />
+      <Route path="/Recipes" element={<Recipes uid={uid} userImg={user.photoURL} userName={user.displayName} />} />
       <Route path="/IndRecipe" element={<IndRecipe uid={uid} user={user} />} />
       <Route path="/FilteredRecipes/:category" element={<FilteredRecipes />} />
       <Route path="/Favourites" element={<Favourites uid={uid}/>} />

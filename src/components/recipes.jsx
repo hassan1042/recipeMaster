@@ -6,7 +6,7 @@ import LoginPage from "./Login";
 import { useAuth } from "../hookx/use-Auth";
 import { serverTimestamp } from "firebase/firestore";
 
-function Recipes({}) {
+function Recipes({uid, userName, userImg}) {
 
  
   const [loading, setLoading] = useState(false);
@@ -39,10 +39,10 @@ function Recipes({}) {
   if (!currentUser) {
     return <LoginPage />;
   }
-  const uid = currentUser ? currentUser.uid : null;
+  // const uid = currentUser ? currentUser.uid : null;
 
-  const userName = currentUser.displayName;
-  const userImg = currentUser.photoURL;
+  // const userName = currentUser.userName;
+  // const userImg = currentUser.photoURL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
