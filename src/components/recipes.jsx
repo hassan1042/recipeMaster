@@ -6,7 +6,7 @@ import LoginPage from "./Login";
 import { useAuth } from "../hookx/use-Auth";
 import { serverTimestamp } from "firebase/firestore";
 
-function Recipes({uid, userName, userImg}) {
+function Recipes() {
 
  
   const [loading, setLoading] = useState(false);
@@ -39,10 +39,10 @@ function Recipes({uid, userName, userImg}) {
   if (!currentUser) {
     return <LoginPage />;
   }
-  // const uid = currentUser ? currentUser.uid : null;
+  const uid = currentUser ? currentUser.uid : null;
 
-  // const userName = currentUser.userName;
-  // const userImg = currentUser.photoURL;
+  const userName = currentUser.displayName;
+  const userImg = currentUser.photoURL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -155,7 +155,7 @@ function Recipes({uid, userName, userImg}) {
             <input
               className="w-auto capitalize p-2 m-4  text-md shadow-lg py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value.toLocaleLowerCase())}
               type="text"
               placeholder="Name of the recipe"
               required
@@ -190,7 +190,7 @@ function Recipes({uid, userName, userImg}) {
 </label>
 
             <label className="flex items-center" htmlFor="making">
-              <i className="md:text-xl  font-bold">Making:</i>
+              <i className="md:text-xl  font-bold">Assembling:</i>
               <textarea
                 className="w-auto capitalize  p-2 m-4 text-md shadow-lg py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
                 value={making}
@@ -205,7 +205,7 @@ function Recipes({uid, userName, userImg}) {
            
           </div>
           {/* Categories */}
-          <div className="md:w-[50%]  inline-block">
+          <div className="">
             <label htmlFor="category">
               <i className="font-bold">Select a Category :</i>
               <div>
@@ -259,28 +259,28 @@ function Recipes({uid, userName, userImg}) {
           </div>
 
           {/* SUb Categories */}
-          <div className="md:w-[50%]  inline-block">
+          <div className="">
             <label htmlFor="subCategory">
               <i className="font-bold">Select a SubCategory :</i>
               <div>
                 <input
                   type="radio"
                   name="subCategory"
-                  value="Rice"
+                  value="MainCourse"
                   onChange={(e) => setSubCategory(e.target.value)}
                   className="m-5"
                   required
                 />
-                Rice
-                {/* <input
+                MainCourse
+                <input
                   type="radio"
                   name="subCategory"
-                  value="Bread"
+                  value="Breakfast"
                   onChange={(e) => setSubCategory(e.target.value)}
                   className="m-5"
                   required
                 />
-                Bread */}
+                Breakfast
                 <input
                   type="radio"
                   name="subCategory"
@@ -352,7 +352,7 @@ function Recipes({uid, userName, userImg}) {
       accept="video/*"
       onChange={handleVideoChange}
       className="font-bold italic py-3"
-      required
+      
     />
   </label>
   <label htmlFor="link" className="flex items-center ">

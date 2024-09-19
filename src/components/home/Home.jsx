@@ -74,7 +74,7 @@ function Home() {
           </Link>
         ))}
       </div>
-      {/* {visibleRecipes < recipes.length ? (
+      {visibleRecipes < recipes.length ? (
         <button
           onClick={handleViewMore}
           className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
@@ -89,7 +89,7 @@ function Home() {
         >
           View less
         </button>
-     )} */}
+     )}
       <Invitaion />
       {/* <WeeklyRecipes/> */}
       <Contact />
