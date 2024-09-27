@@ -15,11 +15,11 @@ function Search() {
         }
       };
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center flex-wrap space-y-2 justify-center">
     <select
       value={searchType}
       onChange={(e) => setSearchType(e.target.value)}
-      className="p-2 rounded-lg border border-icons mr-2  text-gray-600 dark:bg-slate-600 dark:text-text max-md:w-[100px]"
+      className="p-2 rounded-lg border border-icons mr-2  text-gray-600 dark:bg-slate-600 dark:text-text  max-md:w-[100px] mt-2"
     >
       <option value="name">By Name</option>
       <option value="ingredients">By Ingredients</option>
