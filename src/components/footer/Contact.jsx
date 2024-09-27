@@ -60,6 +60,8 @@ function Contact() {
 
   return (
     <div 
+         data-aos="fade-down"
+     data-aos-duration="3000"
     id="projectDiscussion" 
     className="w-[90%] lg:w-[50%] mx-auto p-4  shadow-lg rounded-lg mt-5"
     style={{backgroundColor:selectedColor}}

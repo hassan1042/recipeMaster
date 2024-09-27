@@ -21,7 +21,7 @@ function IndRecipe({ uid, user }) {
     <div className="dark:bg-cardDark">
       <ScrollToTopOnMount />
       {/* Nav */}
-      <section className="w-[80%] mx-auto dark:text-text">
+      <section className="w-[97%]  mx-auto dark:text-text">
         {indRecipe ? (
           <div className="text-center p-2 dark:text-text ">
             <IndRecipeSlider />
@@ -78,7 +78,7 @@ function IndRecipe({ uid, user }) {
   <p>no videos available</p>
 
 }
-            <RecipeComments recipeId={indRecipe.id} />
+            <RecipeComments recipeId={indRecipe.id} uid={uid}/>
             <div className="container mx-auto p-4">
               {/* Other recipe details */}
               <RecipePublisher

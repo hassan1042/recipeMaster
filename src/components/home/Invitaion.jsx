@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 function Invitaion() {
   return (
 
-        <div className="flex justify-center items-center p-10 dark:text-gray-200">
-          <div className="w-[90%] md:w-[50%]">
+        <div className="flex justify-center items-center p-10 dark:text-gray-200 max-lg:text-sm">
+          <div
+               data-aos="fade-right"
+     data-aos-duration="3000"
+           className="w-[90%] md:w-[50%]">
             If you have a knack for cooking and want to share your culinary
             masterpieces with the world, you've come to the right place! With
             our platform, you can showcase your secret recipes and let others
@@ -27,9 +30,12 @@ function Invitaion() {
               </Link>
             </div>
           </div>
-          <div className="w-[50%] hidden md:block">
+          <div 
+               data-aos="fade-left"
+     data-aos-duration="3000"
+          className="w-[50%] hidden md:block">
             <img
-              src="./Images/chef.jpeg"
+              src="./Images/chef.jpeg "
               alt="chef"
               className="w-full  xl:p-2 ps-5 shadow-lg"
             />

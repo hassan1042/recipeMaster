@@ -49,10 +49,10 @@ const SearchResults = () => {
   }, [searchType, searchQuery]);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Search Results</h2>
+    <div className="p-4 dark:bg-cardDark dark:text-text">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center italic">Search Results</h2>
       {dataAvailable ? (
-        <div className="flex justify-center items-center space-x-6">
+        <div className="flex justify-center items-center space-x-6 flex-wrap space-y-4">
             <Card recipes={recipes} />
           {/* {recipes.map(recipe => (
           ))} */}

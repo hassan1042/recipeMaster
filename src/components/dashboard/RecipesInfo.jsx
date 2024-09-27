@@ -33,7 +33,10 @@ const RecipeInfo = () => {
   };
 
   return (
-    <div>
+    <div
+         data-aos="zoom-in-up"
+     data-aos-duration="3000"
+    >
       <h2 className="text-xl font-bold mb-4 dark:text-text">Recipe Information</h2>
       <div className="flex space-x-2 mb-4">
         {categories.map((category) => (
@@ -48,7 +51,7 @@ const RecipeInfo = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         {filteredRecipes.map((recipe) => (
-          <div key={recipe.id} className="p-4 bg-white shadow-md rounded-lg">
+          <div key={recipe.id} className="p-4 bg-white dark:bg-cardDark dark:text-text shadow-md rounded-lg">
             <h3 className="font-bold text-center">{recipe.name}</h3>
            <div className="flex justify-between items-center">
            <p > {recipe.category}</p>

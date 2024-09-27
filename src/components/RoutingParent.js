@@ -43,7 +43,7 @@ function RoutingParent() {
   // }
 
   return (
-    <>
+    <div className='overflow-hidden'>
     <Router>
     <Routes>
       <Route element={<Layout />}>
@@ -57,7 +57,7 @@ function RoutingParent() {
       </Route>
     </Routes>
   </Router>
-    </>
+    </div>
   );
 }
 

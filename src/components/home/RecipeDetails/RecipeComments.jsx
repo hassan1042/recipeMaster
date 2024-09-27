@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { ListenForComments, addComment } from '../../../services/addCommentsService';
 
-const RecipeComments = ({recipeId}) => {
+const RecipeComments = ({recipeId, uid, }) => {
   // for retrieving comments
   const [comments, setComments] = useState("");
     const [commentText, setCommentText] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
         if(commentText){
-        addComment(commentText , recipeId, );
+        addComment(commentText , recipeId, uid);
         setCommentText("");
 
         } else { 

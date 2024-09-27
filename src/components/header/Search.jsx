@@ -19,7 +19,7 @@ function Search() {
     <select
       value={searchType}
       onChange={(e) => setSearchType(e.target.value)}
-      className="p-2 rounded-lg border border-icons mr-2  text-gray-600 dark:bg-slate-600 dark:text-text"
+      className="p-2 rounded-lg border border-icons mr-2  text-gray-600 dark:bg-slate-600 dark:text-text max-md:w-[100px]"
     >
       <option value="name">By Name</option>
       <option value="ingredients">By Ingredients</option>
@@ -29,7 +29,7 @@ function Search() {
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
       placeholder="Search recipes"
-      className="p-2 rounded-lg border border-icons mr-2  text-gray-600 dark:bg-slate-600 dark:text-text"
+      className="p-2 rounded-lg border border-icons mr-2  text-gray-600 dark:bg-slate-600 dark:text-text max-md:w-[150px]"
     />
 
     <div

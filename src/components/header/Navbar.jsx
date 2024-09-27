@@ -6,6 +6,9 @@ import { ColorPickerProvider, useColorContext } from "../../contexts/colorPicker
 import DarkMode from "./DarkMode";
 import Search from "./Search";
 import { useAuth } from "../../hookx/use-Auth";
+import { faBars, } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Navbar = () => {
   const { currentUser } = useAuth();
 
@@ -30,27 +33,41 @@ const Navbar = () => {
   const handleColorChange = (color) => {
     setPrimaryColor(color);
   };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Function to toggle menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    console.log(isMenuOpen)
+  };
 
 
 
   return (
-    <>
-      <div className="flex justify-center items-center sticky top-0 z-10 w-full text-white text-[1.1em] flex-wrap pb-5 bg-gray-800 dark:bg-bgPrimaryDark">
+    <div className=" bg-main text-textDark dark:text-text shadow-xl dark:bg-bgPrimaryDark  fixed top-0 z-10 w-full ">
+     <div className="flex justify-between items-center w-full px-4">
+    <NavLink to="/" className="cursor-pointer w-20 me-5 min-[1200px]:hidden">
+          <img src="./Images/recipeMaster.png" alt="" />
+        </NavLink>
+        <i onClick={toggleMenu} className="cursor-pointer text-3xl min-[1200px]:hidden">
+        <FontAwesomeIcon icon={faBars} />
+        </i>
+    </div>
+      <div className="flex justify-center  items-center  w-full  font-semibold italic  text-[1.1em] flex-wrap ">
         {/*Categories */}
-
-      <div className="flex justify-between items-center">
-      <NavLink to="/" className="cursor-pointer w-20 me-5">
+      <div className={`flex ${isMenuOpen ? 'max-[1200px]:flex' : 'max-[1200px]:hidden'} justify-between items-center max-[1200px]:flex-col space-y-3 max-[1200px]:pb-3 `} >
+    <NavLink to="/" className="cursor-pointer w-20 me-5 max-[1200px]:hidden ">
           <img src="./Images/recipeMaster.png" alt="" />
         </NavLink>
         <NavLink to="/" className={({ isActive }) => `${isActive ? "text-[#46fff6]" : ""} cursor-pointer py-2 px-4`}>
           Home
         </NavLink>
-        <div>
+        <div className="flex justify-center items-center  flex-wrap">
           {uniqueCategories.map((curElm, ind) => (
             <button key={ind}>
               <NavLink
                 to={`/FilteredRecipes/${curElm}`}
-                className={({ isActive }) => `${isActive ? "text-[#46fff6]" : ""} py-2 px-4 capitalize`}
+                className={({ isActive }) => `${isActive ? "text-[#46fff6]" : ""} py-2 px-4 capitalize `}
                 onClick={() => handleCat(curElm)}
               >
                 {curElm}
@@ -75,15 +92,20 @@ const Navbar = () => {
         )
       }
         <DarkMode/>
-        <ColorPickerProvider onColorChange={handleColorChange} />
+        {/* <ColorPickerProvider onColorChange={handleColorChange} /> */}
       </div>
         
         {/* Search Input and Select */}
-     <Search/>
       </div>
+      
       <hr />
-    
-    </>
+<div className="mx-auto py-3 flex justify-center items-center"><Search/></div>   
+
+
+
+
+
+    </div>
   );
 };
 

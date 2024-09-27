@@ -1,9 +1,10 @@
 import { addDoc, collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/Firebase";
 
-export const addComment = async (commentText, recipeId, ) => {
+export const addComment = async (commentText, recipeId, uid ) => {
     const recipeRef = await addDoc(collection(db, `recipes/${recipeId}/comment`), {
        comment: commentText,
+       uid
       });
       console.log("comment added successfully ");
   

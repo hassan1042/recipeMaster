@@ -39,6 +39,7 @@ function RecipeLikes({ uid }) {
   };
   const handleAddFavourites = (id, name) => {
     addToFavourites(id, uid, name);
+    alert('recipe added to favorites');
   };
 
   return (

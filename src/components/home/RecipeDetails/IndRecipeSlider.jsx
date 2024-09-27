@@ -24,7 +24,7 @@ const IndRecipeSlider = () => {
               <div key={index}>
                 <img
                   src={image}
-                  className="w-full h-[70vh] relative "
+                  className="w-full max-lg:h-[40vh] h-[70vh] relative rounded-lg shadow-md"
                   alt={index}
                 />
                 <p className="text-xl text-center py-3 font-semibold capitalize">

@@ -13,7 +13,7 @@ function Card({recipes}) {
       {recipes.map((curElm) => (
         <Link
           to="/IndRecipe"
-          className="w-[90%] sm:w-[70%] md:w-[50%] lg:w-[23%]  2xl:w-[14%] text-white border-4 border-black rounded-lg  text-center  shadow-lg cursor-pointer"
+          className="w-[90%] sm:w-[70%] md:w-[50%] lg:w-[23%]  2xl:w-[14%] text-white border-4 border-black rounded-lg  text-center  shadow-lg cursor-pointer "
           onClick={() => handleIndividualRecipe(curElm)}
           key={curElm.id}
         >

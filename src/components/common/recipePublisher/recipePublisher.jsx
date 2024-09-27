@@ -4,7 +4,7 @@ const RecipePublisher = ({ userName, userImg, userDescription }) => {
     return (
         <>
         <div
-       className="items-center p-2 w-1/2 mx-auto bg-white dark:bg-textDark shadow-md rounded-lg md:flex-row md:p-6 md:space-x-6"
+       className="items-center p-2 max-md:w-[80%] w-1/2 mx-auto bg-white dark:bg-textDark shadow-md rounded-lg md:flex-row md:p-6 md:space-x-6"
 
         >
         {/* <div className='text-yellow-500 text-3xl font-bold'>The Chef</div> */}

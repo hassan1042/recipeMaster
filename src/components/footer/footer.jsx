@@ -13,7 +13,7 @@ const Footer = () => {
   }, [subEmail]);
 
   return (
-    <footer className=" h-auto   text-white py-5 dark:bg-bgPrimaryDark bg-gray-800 ">
+    <footer className=" h-auto    py-5 dark:bg-bgPrimaryDark bg-main text-textDark dark:text-text ">
       <div className="flex justify-betweeen mx-auto flex-wrap w-[90%] lg:w-[80%] p-10 ">
         {/* Newsletter */}
         <div className="w-full lg:w-1/3  md:w-1/2 flex flex-col items-start mx-auto mb-10">
