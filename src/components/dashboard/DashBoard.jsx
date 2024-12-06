@@ -51,7 +51,7 @@ function Dashboard() {
       <div className={`bg-main text-textDark dark:text-text font-medium italic dark:bg-slate-900  sticky   top-10   ${isExpanded ? 'lg:w-[15%]' : 'lg:w-16'} max-lg:w-16 transition-width duration-300 h-auto`}>
       
         <button
-          className="text-pink-500 p-4 focus:outline-none max-lg:hidden"
+          className="text-pink-500 p-4 focus:outline-none max-lg:hidden mt-5"
           onClick={toggleSidebar}
         >
           {isExpanded ? <FaAnglesLeft /> : <FaAnglesRight />}
