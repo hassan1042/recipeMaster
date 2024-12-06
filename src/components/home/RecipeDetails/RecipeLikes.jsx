@@ -17,13 +17,13 @@ function RecipeLikes({ uid }) {
 
   const handleUpdateLikes = (id) => {
     setLiked(!liked);
-    // if (!liked) {
+    if (!liked) {
       setLikes((likes) => likes + 1);
-    // } else {
-    //   if (likes > 0) {
-    //     setLikes((likes) => likes - 1);
-    //   }
-    // }
+    } else {
+      if (likes > 0) {
+        setLikes((likes) => likes - 1);
+      }
+    }
     updateRecipe(id, likes, "likes");
   };
   const handleUpdateDisLikes = (id) => {

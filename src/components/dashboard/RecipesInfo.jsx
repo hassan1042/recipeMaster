@@ -35,9 +35,9 @@ const RecipeInfo = () => {
   return (
     <div
          data-aos="zoom-in-up"
-     data-aos-duration="3000"
+     data-aos-duration="1000"
     >
-      <h2 className="text-xl font-bold mb-4 dark:text-text">Recipe Information</h2>
+      <h2 className="text-xl font-bold mb-4 dark:text-text mt-5">Recipe Information</h2>
       <div className="flex space-x-2 mb-4">
         {categories.map((category) => (
           <button

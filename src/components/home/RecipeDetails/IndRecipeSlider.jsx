@@ -19,7 +19,7 @@ const IndRecipeSlider = () => {
    <>
      {
       indRecipe.imageUrls.length > 1 ?  <div>
-      <Slider {...settings} className="overflow-hidden">
+      <Slider {...settings} className="overflow-hidden mt-40">
             {indRecipe.imageUrls.map((image, index) => (
               <div key={index}>
                 <img

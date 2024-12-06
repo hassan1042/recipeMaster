@@ -24,7 +24,7 @@ function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 pt-36 dark:bg-slate-950">
-      <div className="max-w-md w-full p-6 bg-white dark:bg-cardDark dark:text-text shadow-lg rounded-lg">
+      <div className="max-w-md w-full p-6 bg-white dark:bg-cardDark dark:text-text shadow-lg rounded-lg mt-10">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 text-center">{signActive ? "Sign Up" : "Log In"} to Recipe Master</h2>
         <form className="space-y-4" onSubmit={handleLogin}>
           <div>
@@ -34,7 +34,12 @@ function LoginPage() {
               id="email"
               className="mt-1 p-2 w-full  border-2 border-gray-300 rounded-md focus:outline-none focus:border-icons dark:bg-slate-800"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+            const value = e.target.value;
+            if (value.length <= 15) {
+              setEmail(e.target.value);
+            }
+          }}
               required
             />
           </div>
@@ -44,7 +49,13 @@ function LoginPage() {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder='must be between 6-8 characters'
+              onChange={(e) => {
+            const value = e.target.value;
+            if (value.length <= 8) {
+              setPassword(e.target.value);
+            }
+          }}
               required
               className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md focus:outline-none focus:border-icons dark:bg-slate-800"
             />

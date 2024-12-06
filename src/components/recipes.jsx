@@ -5,6 +5,10 @@ import ScrollToTopOnMount from "./common/scrollToTop/ScrollToTopOnMount";
 import LoginPage from "./Login";
 import { useAuth } from "../hookx/use-Auth";
 import { serverTimestamp } from "firebase/firestore";
+import CatAndSub from "./recipeAddition/CatAndSub";
+import Health from "./recipeAddition/Health";
+import ImgVidLink from "./recipeAddition/ImgVidLink";
+import TopSection from "./recipeAddition/TopSection";
 
 function Recipes() {
 
@@ -121,13 +125,6 @@ function Recipes() {
     return ingredient.toLowerCase().trim().replace(/[^\w\s]/gi, '');
   };
   
-  // Example usage
-  const handleIngredientsChange = (e) => {
-    const input = e.target.value;
-    const ingredientList = input.split(',').map(normalizeIngredient);
-    setIngredients(ingredientList);
-  };
-
 
 
   
@@ -150,264 +147,27 @@ function Recipes() {
 <div className=" bg-neutral-200 dark:bg-cardDark dark:text-text px-2 md:px-4 lg:px-8 py-0">
        
         <form className="pb-2" onSubmit={handleSubmit} >
-          <label htmlFor="name" className="flex items-center justify-center ">
-            <i className="md:text-xl  font-bold">Name:</i>
-            <input
-              className="w-auto capitalize p-2 m-4  text-md shadow-lg py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500  max-sm:w-[200px]"
-              value={name}
-              onChange={(e) => setName(e.target.value.toLocaleLowerCase())}
-              type="text"
-              placeholder="Name of the recipe"
-              required
-            />
-          </label>
-          <div className="flex items-center justify-center flex-wrap ">
-          <label className="flex items-center" htmlFor="introduction">
-              <i className="md:text-xl  font-bold">Introduction:</i>
-              <textarea
-                className="w-auto capitalize  p-2 m-4 text-md shadow-lg py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 max-sm:w-[200px]"
-                value={introduction}
-                onChange={(e) => setIntroduction(e.target.value)}
-                type="text"
-                placeholder="Introduce your recipe"
-                rows="2"
-                cols="30"
-                required
-              />
-            </label>
-            <label className="flex items-center " htmlFor="ingredients">
-  <i className="md:text-xl  font-bold"> Ingredients:</i>
-  <textarea
-    className="w-auto capitalize p-2 m-4  text-md shadow-lg py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500  max-sm:w-[200px]"
-    value={ingredients}
-    onChange={(e) => setIngredients(e.target.value.split(',').map(normalizeIngredient))}
-    type="text"
-    placeholder="Ingredients of your Recipe (separated by commas)"
-    rows="2"
-    cols="30"
-    required
-  />
-</label>
+        {/** Name Intro Ing Assem */}
+        <TopSection
+        name={name} setName={setName} introduction={introduction} setIntroduction={setIntroduction} ingredients={ingredients} setIngredients={setIngredients} normalizeIngredient={normalizeIngredient} making={making} setMaking={setMaking} 
 
-            <label className="flex items-center" htmlFor="making">
-              <i className="md:text-xl  font-bold">Assembling:</i>
-              <textarea
-                className="w-auto capitalize  p-2 m-4 text-md shadow-lg py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500  max-sm:w-[200px]"
-                value={making}
-                onChange={(e) => setMaking(e.target.value)}
-                type="text"
-                placeholder="Explain your recipe"
-                rows="2"
-                cols="30"
-                required
-              />
-            </label>
-           
-          </div>
-          {/* Categories */}
-          <div className="max-md:my-3 flex ">
-            <label htmlFor="category">
-              <i className="font-bold">Select a Category :</i>
-              <div>
-                <input
-                  type="radio"
-                  name="category"
-                  value="chineese"
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Chineese
-                <input
-                  type="radio"
-                  name="category"
-                  value="pakistani"
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Pakistani
-                <input
-                  type="radio"
-                  name="category"
-                  value="Italian"
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Italian
-                <input
-                  type="radio"
-                  name="category"
-                  value="Indian"
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="m-2 sm:m-5 visited:bg-pink-500"
-                  required
-                />
-                Indian
-                <input
-                  type="radio"
-                  name="category"
-                  value="Others"
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="m-2 sm:m-5 visited:bg-pink-500"
-                  required
-                />
-                Others
-              </div>
-            </label>
-          </div>
+        />
+          {/* Categories Sub Cats */}
+          <CatAndSub 
+           setCategory={setCategory}
+           setSubCategory={setSubCategory}
+          />
+        
+          {/* The Images video and video link*/}
 
-          {/* SUb Categories */}
-          <div className="">
-            <label htmlFor="subCategory">
-              <i className="font-bold">Select a SubCategory :</i>
-              <div>
-                <input
-                  type="radio"
-                  name="subCategory"
-                  value="MainCourse"
-                  onChange={(e) => setSubCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                MainCourse
-                <input
-                  type="radio"
-                  name="subCategory"
-                  value="Breakfast"
-                  onChange={(e) => setSubCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Breakfast
-                <input
-                  type="radio"
-                  name="subCategory"
-                  value="Curry"
-                  onChange={(e) => setSubCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Curry
-                <input
-                  type="radio"
-                  name="subCategory"
-                  value="Vegan"
-                  onChange={(e) => setSubCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Vegan
-                <input
-                  type="radio"
-                  name="subCategory"
-                  value="Snacks"
-                  onChange={(e) => setSubCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Snacks
-                <input
-                  type="radio"
-                  name="subCategory"
-                  value="Desserts"
-                  onChange={(e) => setSubCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                Desserts
-                <input
-                  type="radio"
-                  name="subCategory"
-                  value="General"
-                  onChange={(e) => setSubCategory(e.target.value)}
-                  className="m-5"
-                  required
-                />
-                General
-              </div>
-            </label>
-          </div>
-          {/* The Images */}
-          <div className=" mx-auto  w-full text-start p-5">
-            <label htmlFor="imageInput">
-              <i className=" font-bold italic me-5 ">Upload  images of your dish here (at least 2 recommended ):</i>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                multiple
-                className="font-bold italic py-3 "
-                required
-              />
-            </label>
-          </div>
-          {/* video and video link */}
-          <div className="mx-auto w-full text-start p-5">
-  <label htmlFor="videoInput">
-    <i className="font-bold italic me-5">Upload your video of making here:</i>
-    <input
-      type="file"
-      accept="video/*"
-      onChange={handleVideoChange}
-      className="font-bold italic py-3"
-      
-    />
-  </label>
-  <label htmlFor="link" className="flex items-center justify-center ">
-            <i className="md:text-lg  font-semibold">Link for a Tutorial(optional):</i>
-            <input
-              className="w-auto  p-2 m-4  text-md shadow-lg py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 max-sm:w-[180px]"
-              value={videoLink}
-              onChange={(e) => setVideoLink(e.target.value)}
-              type="url"
-              placeholder="Paste your link here"
-              
-            />
-          </label>
-
-</div>
+          <ImgVidLink
+          handleImageChange={handleImageChange} handleVideoChange={handleVideoChange} videoLink={videoLink} setVideoLink={setVideoLink}
+          />
 
           {/* the health percentage */}
-          <div className="md:text-[1.1em] md:font-semibold font-serif ">
-            <p className="py-3">
-              {" "}
-              Please Select the correct quantity of the specified elements in
-              your recipe:{" "}
-            </p>
-            <label className="m-3 grow flex">
-              Fats: &nbsp; &nbsp;
-              <input
-                type="range"
-                value={fats}
-                onChange={(e) => setFats(parseFloat(e.target.value))}
-                required
-              />{" "}
-              &nbsp; &nbsp; {fats}
-            </label>
-            <label htmlFor="protiens" className="m-3 grow flex">
-              Proteins: &nbsp; &nbsp;
-              <input
-                name="protiens"
-                type="range"
-                value={proteins}
-                onChange={(e) => setProteins(parseFloat(e.target.value))}
-                required
-              />{" "}
-              &nbsp; &nbsp; {proteins}
-            </label>
-            <label className="m-3 grow flex ">
-              Carbohydrates: &nbsp; &nbsp;
-              <input
-                type="range"
-                value={carbohydrates}
-                onChange={(e) => setCarbohydrates(parseFloat(e.target.value))}
-                required
-              />{" "}
-              &nbsp; &nbsp; {carbohydrates}
-            </label>
-          </div>
+        <Health
+        fats={fats} setFats={setFats} carbohydrates={carbohydrates} setCarbohydrates={setCarbohydrates} proteins={proteins} setProteins={setProteins}
+        />
           {/* The Add Recipe button */}
           <div className="text-center">
         <button

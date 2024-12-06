@@ -39,7 +39,7 @@ const Favourites = ({ uid }) => {
   return (
     <div>
     <ScrollToTopOnMount/>
-      <h2 className="text-center text-3xl text-yellow-500 p-5">
+      <h2 className="text-center font-bold text-xl md:text-2xl lg:text-3xl text-textDark dark:text-text p-2 md:p-3 lg:p-5">
         Your Favourites
       </h2>
         {/* {favRecipes.map((favRecipe) => (

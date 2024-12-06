@@ -32,7 +32,7 @@ const AddedRecipes = () => {
   return (
     <div className='w-[90%] mx-auto'>
     <ScrollToTopOnMount/>
-         <div className='text-center text-xl md:text-2xl lg:text-3xl text-yellow-500 p-5'>Recipes you have added</div>
+         <div className='text-center font-bold text-xl md:text-2xl lg:text-3xl text-textDark dark:text-text p-2 md:p-3 lg:p-5'>Recipes you have added</div>
       {/* <p>Your total likes are {userLikes} </p>
       <p>Your total DisLikes are {userDisLikes} </p> */}
   <div className='flex flex-wrap'>

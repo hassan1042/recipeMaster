@@ -11,7 +11,7 @@ function DashCard({recipes}) {
   return (
    <div
         data-aos="fade-down"
-     data-aos-duration="3000"
+     data-aos-duration="1000"
     className='flex justify-between items-center flex-wrap'>
      {recipes.map((recipe) => (
         <Link

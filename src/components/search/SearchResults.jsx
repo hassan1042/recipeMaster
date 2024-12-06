@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import RecipeCard from "./RecipeCard"; // Component to render individual recipe cards
 import { db } from "../../firebase/Firebase";
 import Card from "../common/card/Card";
 
@@ -17,21 +16,25 @@ const SearchResults = () => {
     const fetchRecipes = async () => {
       const recipesCollection = collection(db, "recipes");
       let q;
-      if(searchQuery){
+      if (searchQuery) {
         searchQuery = searchQuery[0].toLowerCase() + searchQuery.substring(1);
-       };
+      }
       if (searchType === "name") {
         q = query(recipesCollection, where("name", "==", searchQuery));
       } else if (searchType === "ingredients") {
-        const ingredients = searchQuery.split(",").map(ingredient => ingredient.trim().toLowerCase());
+        const ingredients = searchQuery
+          .split(",")
+          .map((ingredient) => ingredient.trim().toLowerCase());
 
         // Create a query to find recipes containing all the specified ingredients
         const querySnapshot = await getDocs(recipesCollection);
         const recipesArray = querySnapshot.docs
-          .map(doc => ({ id: doc.id, ...doc.data() }))
-          .filter(recipe => {
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((recipe) => {
             // Check if recipe contains all the ingredients
-            return ingredients.every(ingredient => recipe.ingredients.includes(ingredient));
+            return ingredients.every((ingredient) =>
+              recipe.ingredients.includes(ingredient)
+            );
           });
 
         setRecipes(recipesArray);
@@ -40,7 +43,10 @@ const SearchResults = () => {
       }
 
       const querySnapshot = await getDocs(q);
-      const recipesArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const recipesArray = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       setRecipes(recipesArray);
       setDataAvailable(recipesArray.length > 0);
     };
@@ -50,10 +56,12 @@ const SearchResults = () => {
 
   return (
     <div className="p-4 dark:bg-cardDark dark:text-text">
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center italic">Search Results</h2>
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center italic mt-40">
+        Search Results
+      </h2>
       {dataAvailable ? (
-        <div className="flex justify-center items-center space-x-6 flex-wrap space-y-4">
-            <Card recipes={recipes} />
+        <div className="flex justify-center items-center space-x-6 flex-wrap space-y-4 ">
+          <Card recipes={recipes} />
           {/* {recipes.map(recipe => (
           ))} */}
         </div>

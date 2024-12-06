@@ -3,7 +3,6 @@ import { useIndRecipeContext } from "../../../contexts/indRecipeContext";
 import { removeRecipe } from "../../../firebase/Firebase";
 import RecipeLikes from "./RecipeLikes";
 import DialogueBox from "../../common/dialogueBox/DialogueBox";
-import Rating from "./rating/Rating";
 import IndRecipeSlider from "./IndRecipeSlider";
 import RecipeComments from "./RecipeComments";
 import RecipePublisher from "../../common/recipePublisher/recipePublisher";
@@ -72,13 +71,12 @@ function IndRecipe({ uid, user }) {
 
             {/* <Rating/>    */}
 
-{
- ( indRecipe.videoUrl || indRecipe.videoLink) ?
-  <IndRecipeVideo indRecipe={indRecipe}/> : 
-  <p>no videos available</p>
-
-}
-            <RecipeComments recipeId={indRecipe.id} uid={uid}/>
+            {indRecipe.videoUrl || indRecipe.videoLink ? (
+              <IndRecipeVideo indRecipe={indRecipe} />
+            ) : (
+              <p>no videos available</p>
+            )}
+            <RecipeComments recipeId={indRecipe.id} uid={uid} />
             <div className="container mx-auto p-4">
               {/* Other recipe details */}
               <RecipePublisher

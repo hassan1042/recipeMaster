@@ -14,7 +14,7 @@ function SubCatNav() {
        
       };
   return (
-    <div className=" text-center text-[1.1em] fixed z-[2]  w-full bg-[#48CD9A] dark:bg-bgPrimaryDark">
+    <div className=" text-center text-[1.1em] fixed z-[2]  w-full bg-[#48CD9A] dark:bg-bgPrimaryDark mt-3">
     {uniqueSubCategories.map((curElm, ind) => (
       <button
         className="py-2 px-4 capitalize text-white focus:text-pink-600"

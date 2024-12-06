@@ -12,6 +12,7 @@ function Search() {
     const handleSearch = () => {
         if (searchTerm.trim()) {
           navigate(`/search?type=${searchType}&query=${searchTerm}`);
+          setSearchTerm('');
         }
       };
   return (

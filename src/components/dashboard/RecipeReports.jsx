@@ -80,15 +80,25 @@ const RecipeReports = () => {
 
     // Add logo (replace with actual base64 string or image URL)
     const logo = './Images/recipeMaster.png'; // Shortened
-    doc.addImage(logo, 'JPEG', 10, 10, 30, 30); // Adjust dimensions accordingly
-
-    // Add report title and table
-    doc.setFontSize(16);
-    doc.text("Recipe Report by RecipeMaster", 20, 50); // Positioning below the logo
+    doc.addImage(logo, 'JPEG', 130, 20, 50, 15); // Reducing width to 50 and height to 15
+    // Adjust dimensions and positioning accordingly
+       doc.text(' Online Recipe Hub', 20, 30); // Position title accordingly
+       doc.setFontSize(10);
+       doc.text(' WhatsApp: +92 2345768903', 120, 50); // Position text accordingly
+       doc.setFontSize(10);
+       doc.text(' Email:    ikram631091@gmail.com', 120, 55); // Position text accordingly
+       doc.text('______________________________________________________________________________________________________________', 0, 63); 
+       doc.text('______________________________________________________________________________________________________________', 0, 64); 
+       doc.setFontSize(16);
+       doc.setFont("bold", ); // Set font style to bold
+       doc.text('Recipe Report', 80, 72); 
+     // Add report title below the logo
+     doc.setFontSize(10);
+     doc.text('Street 26 Biha road Matta Swat KP, Pakistan', 23, 40); 
 
 
     doc.autoTable({
-      startY: 60,
+      startY: 75,
       head: [["Name", "Category", "SubCategory", "Health %", "Chef"]],
       body: filteredRecipes.map((recipe) => [
         recipe.name,
@@ -99,11 +109,17 @@ const RecipeReports = () => {
       ]),
     });
          // Get the final Y position of the table to place the text after the table
-  const finalY = doc.lastAutoTable.finalY || 70;
+   // Get the final Y position of the table to place the footer after the table
+   const finalY = doc.lastAutoTable.finalY || 70;
 
-  doc.setTextColor(100); // Optional: Set the text color (gray in this case)
-  doc.setFont("helvetica", "bold"); // Set font style to bold
-  doc.text("Created and Managed By: Ikram & Zahid", 20, finalY + 30); 
+   // Footer text after the table
+   doc.setTextColor(100); // Optional: Set text color (gray in this case)
+   doc.setFont("helvetica", ); // Set font style to bold
+   doc.setFontSize(10);
+   doc.text("Created by: Ikramullah", 20, finalY + 30);
+   doc.setFontSize(10);
+   doc.text("Signature: _______________________", 20, finalY + 40);
+   doc.text("Dated:       /      /    ", 20, finalY + 50);
 
     doc.save("recipe_report.pdf");
   };
@@ -114,14 +130,25 @@ const RecipeReports = () => {
   
     // Add logo (replace with actual base64 string or image URL)
     const logo = './Images/recipeMaster.png'; // Shortened for example
-    doc.addImage(logo, 'JPEG', 10, 10, 30, 30); // Adjust dimensions accordingly
-    // Add report title and table
-    doc.setFontSize(16);
-    doc.text("Recipe Report by RecipeMaster", 20, 50); // Positioning below the logo
+    doc.addImage(logo, 'JPEG', 130, 20, 50, 15); // Reducing width to 50 and height to 15
+    // Adjust dimensions and positioning accordingly
+       doc.text(' Online Recipe Hub', 20, 30); // Position title accordingly
+       doc.setFontSize(10);
+       doc.text(' WhatsApp: +92 2345768903', 120, 50); // Position text accordingly
+       doc.setFontSize(10);
+       doc.text(' Email:    ikram631091@gmail.com', 120, 55); // Position text accordingly
+       doc.text('______________________________________________________________________________________________________________', 0, 63); 
+       doc.text('______________________________________________________________________________________________________________', 0, 64); 
+       doc.setFontSize(16);
+       doc.setFont("bold", ); // Set font style to bold
+       doc.text('Recipe Report', 80, 72); 
+     // Add report title below the logo
+     doc.setFontSize(10);
+     doc.text('Street 26 Biha road Matta Swat KP, Pakistan', 23, 40); 
 
   
     doc.autoTable({
-      startY: 60,
+      startY: 75,
       head: [["Name", "Category", "SubCategory", "Health %", "Chef"]],
       body: filteredRecipes.map((recipe) => [
         recipe.name,
@@ -131,12 +158,17 @@ const RecipeReports = () => {
         recipe.userName || "Anonymous",
       ]),
     });
-      // Get the final Y position of the table to place the text after the table
-  const finalY = doc.lastAutoTable.finalY || 70;
+   // Get the final Y position of the table to place the footer after the table
+   const finalY = doc.lastAutoTable.finalY || 70;
 
-    doc.setTextColor(100); // Optional: Set the text color (gray in this case)
-    doc.setFont("helvetica", "bold"); // Set font style to bold
-    doc.text("Created and Managed By: Ikram & Zahid", 20, finalY + 30); 
+   // Footer text after the table
+   doc.setTextColor(100); // Optional: Set text color (gray in this case)
+   doc.setFont("helvetica", ); // Set font style to bold
+   doc.setFontSize(10);
+   doc.text("Created by: Ikramullah", 20, finalY + 30);
+   doc.setFontSize(10);
+   doc.text("Signature: _______________________", 20, finalY + 40);
+   doc.text("Dated:       /      /    ", 20, finalY + 50);
   
     // Open the PDF in a new window for printing
     const pdfDataUrl = doc.output('dataurlstring');
@@ -154,9 +186,9 @@ const RecipeReports = () => {
   return (
     <div 
          data-aos="zoom-out-up"
-     data-aos-duration="3000"
+     data-aos-duration="1000"
     >
-      <h2 className="text-xl font-bold mb-4 dark:text-gray-200">Recipe Reports</h2>
+      <h2 className="text-xl font-bold mb-4 dark:text-gray-200 mt-5">Recipe Reports</h2>
 
       <div className="flex space-x-2 mb-4 flex-wrap space-y-4">
         <DatePicker
@@ -164,12 +196,16 @@ const RecipeReports = () => {
           onChange={(date) => setStartDate(date)}
           placeholderText="Start Date"
           className="py-2 px-4 rounded-lg border mt-4"
+          maxDate={endDate} // Optional: Ensures start date can't be after end date
+
+
         />
         <DatePicker
           selected={endDate}
           onChange={(date) => setEndDate(date)}
           placeholderText="End Date"
           className="py-2 px-4 rounded-lg border "
+        minDate={startDate} // Ensures end date can't be before start date
         />
         <button
           onClick={fetchRecipes}
