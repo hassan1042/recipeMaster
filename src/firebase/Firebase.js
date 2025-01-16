@@ -69,6 +69,7 @@ export const addRecipe = async (recipeData) => {
 
     // Upload the video file to Firebase Storage
     await uploadBytes(videoRef, video);
+     
 
     // Retrieve the download URL of the uploaded video
     const videoUrl = await getDownloadURL(videoRef);
