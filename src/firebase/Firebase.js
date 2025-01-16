@@ -4,13 +4,13 @@ import {  getStorage,  ref,  getDownloadURL,  uploadString, uploadBytes,} from "
 import { v4 as uuidv4 } from "uuid";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA9rTKqzGiQgu45uW50ZvEuiPpXwghvlJk",
-  authDomain: "recipemaster-c0221.firebaseapp.com",
-  projectId: "recipemaster-c0221",
-  storageBucket: "recipemaster-c0221.appspot.com",
-  messagingSenderId: "192189898965",
-  appId: "1:192189898965:web:71b4feddd663ab0bb0c25c",
-  databaseURL: "https://recipemaster-c0221-default-rtdb.firebaseio.com",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
 };
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
